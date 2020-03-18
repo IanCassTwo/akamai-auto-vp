@@ -112,9 +112,8 @@ func main() {
 	if (versionToActivate != 0) {
 		var activation Activation
 		activation.Network = "STAGING"
-		//activation.version = *disableversion
 		a,_ := json.Marshal(activation)
-		p := fmt.Sprintf("/cloudlets/api/v2/policies/%d/versions/%d/activations",  *policyid, *disableversion)
+		p := fmt.Sprintf("/cloudlets/api/v2/policies/%d/versions/%d/activations",  *policyid, versionToActivate)
 		fmt.Println(p)
 		fmt.Println(string(a))
 		req, _ := client.NewRequest(config, "POST", p, bytes.NewBuffer(a))
